@@ -1,0 +1,58 @@
+---
+title: "FML_Assignment_1"
+author: "Balamanoj Reddy Kommareddy"
+date: "2023-09-08"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+#source: Downloaded the data set from kaggle.https://www.kaggle.com/datasets/iamsouravbanerjee/nifty50-stocks-dataset/code?resource=download.
+
+#Importing the dataset into R
+```{r}
+#This Library can be used to load the package
+library(readr)
+National_Stocks = read.csv("G:/FML_Assignment_1/National_Stock_Exchange_of_India_Ltd.csv")
+#Printing the head of dataset 
+head(National_Stocks)
+```
+
+
+
+#Descriptive Statistics: This gives the summary of the data that includes mean,median,mode,range and standard deviation.By this we can know the average values and most frequent values that helps us to understand the data well.
+```{r}
+#The below functions gives the average of the column Chng
+mean(National_Stocks$Chng)
+#The below function shows the data types of the variables that are in the dataset
+str(National_Stocks)
+#summary can be used to print descriptive statistics such as mean,medium,mode on given variables
+summary(National_Stocks)
+```
+
+#Here I used the log transformation for the variable volume.
+```{r}
+#To calculate log transformation
+log_value <- log(National_Stocks$Volume..lacs.)
+log_value
+
+```
+
+#This is the histogram of an quantitative variable that is showing the stocks changing in a year.
+```{r}
+hist(National_Stocks$X365.d...chng)
+```
+
+#The plot below shows the scatter plot between Volume in lakhs and Percentage of Change variables.
+```{r}
+
+plot(x = National_Stocks$Volume..lacs.,
+     y = National_Stocks$X365.d...chng,
+     xlab = "Volume in lakhs",
+     ylab= "Percentage of Change", 
+     main = "Stock Price Variation per Year",
+     pch = 19,
+     col = "green"
+     )
+
+```
